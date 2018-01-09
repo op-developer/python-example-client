@@ -8,7 +8,6 @@ with open('config.json') as json_data_file:
 
 API = config['API']['baseUrl']
 
-
 def account_get_all(headers):
     '''
     Returns all accounts from owner
@@ -18,7 +17,6 @@ def account_get_all(headers):
     # Make get request to API with headers
     response = requests.get(url, headers=headers)
     return response.json()
-
 
 def account_get_by_id(account_id, headers):
     '''
@@ -30,32 +28,17 @@ def account_get_by_id(account_id, headers):
     response = requests.get(url, headers=headers)
     return response.json()
 
-
 def account_transactions(account_id, headers):
     url = API + '/v1/accounts/{}/transactions'.format(account_id)
     response = requests.get(url, headers=headers)
     return response.json()
-
 
 def holdings(headers):
     url = API + '/v1/holdings'
     response = requests.get(url, headers=headers)
     return response.json()
 
-
-def holdings_by_id(owner_id, headers):
-    url = API + '/v1/holdings/{}'.format(owner_id)
-    response = requests.get(url, headers=headers)
-    return response.json()
-
-
 def funds(headers):
     url = API + '/v1/funds'
-    response = requests.get(url, headers=headers)
-    return response.json()
-
-
-def funds_by_id(fund_id, headers):
-    url = API + '/v1/funds/{}'.format(fund_id)
     response = requests.get(url, headers=headers)
     return response.json()
