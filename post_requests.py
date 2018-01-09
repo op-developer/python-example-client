@@ -1,9 +1,12 @@
 # coding=utf-8
 import requests
-
+import json
 # This example uses Requests HTTP Library
 
-API = 'https://sandbox.eu-de.mybluemix.net'
+with open('config.json') as json_data_file:
+    config = json.load(json_data_file)
+
+API = config['API']['baseUrl']
 
 
 def payment_initiate(payer_iban, receiver_iban, amount, headers):

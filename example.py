@@ -25,3 +25,5 @@ payment = post_requests.payment_initiate(
 # Confirm payment with paymentId returned in initiation
 # Returns payment info
 confirm = post_requests.payment_confirm(payment['paymentId'], HEADERS)
+
+print(account_by_id)
