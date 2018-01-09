@@ -21,5 +21,5 @@ To use this example:
 - Or change header from source code
 - Run code
 ```
-    python example.py
+    python client.py
 ```
