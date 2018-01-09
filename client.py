@@ -14,7 +14,7 @@ HEADERS = {
 accounts = get_requests.account_get_all(HEADERS)
 
 # Returns account with id 'bb729060d23d0edf8de9abdcf7906bb183f2582f'
-account_by_id = get_requests.account_get_by_id(
+account_by_id_before = get_requests.account_get_by_id(
     'bb729060d23d0edf8de9abdcf7906bb183f2582f', HEADERS)
 
 # Initiate 10 EUR payment from iban 'FI8359986950002741' to iban 'FI4859986920215738'
@@ -26,4 +26,10 @@ payment = post_requests.payment_initiate(
 # Returns payment info
 confirm = post_requests.payment_confirm(payment['paymentId'], HEADERS)
 
-print(account_by_id)
+account_by_id_after = get_requests.account_get_by_id(
+    'bb729060d23d0edf8de9abdcf7906bb183f2582f', HEADERS)
+
+
+print('Account information before transaction:\n',account_by_id_before)
+print('')
+print('Account information after transaction:\n',account_by_id_after)
