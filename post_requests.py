@@ -24,7 +24,7 @@ def payment_initiate(payer_iban, receiver_iban, amount, headers):
         "receiverName": "string"
     }
 
-    url = API + '/api/payments/initiate'
+    url = API + '/v1/payments/initiate'
 
     # Make post request to API with headers and request body
     response = requests.post(url, headers=headers, json=body)
@@ -39,7 +39,7 @@ def payment_confirm(payment_id, headers):
         'paymentId': payment_id
     }
 
-    url = API + '/api/payments/confirm'
+    url = API + '/v1/payments/confirm'
 
     # Make post request to API with headers and request body
     response = requests.post(url, headers=headers, json=body)
@@ -52,7 +52,7 @@ def funds_subscriptions(fund_id, amount, iban, headers):
         "amount": amount,
         "accountNumber": iban
     }
-    url = API + '/api/funds/{}/subscriptions'.format(fund_id)
+    url = API + '/v1/funds/{}/subscriptions'.format(fund_id)
 
     # Make post request to API with headers and request body
     response = requests.post(url, headers=headers, json=body)
@@ -65,7 +65,7 @@ def funds_redemptions(fund_id, amount, iban, headers):
         "amount": amount,
         "accountNumber": iban
     }
-    url = API + '/api/funds/{}/redemptions'.format(fund_id)
+    url = API + '/v1/funds/{}/redemptions'.format(fund_id)
 
     # Make post request to API with headers and request body
     response = requests.post(url, headers=headers, json=body)
