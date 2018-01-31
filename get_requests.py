@@ -1,6 +1,7 @@
 # coding=utf-8
 import requests
 import json
+
 # This example uses Requests HTTP Library
 
 with open('config.json') as json_data_file:
@@ -52,5 +53,26 @@ def holdings(headers):
 
 def funds(headers):
     url = API + '/v1/funds'
+    response = requests.get(url, headers=headers)
+    return response.json()
+
+
+def branches(headers, bbox='', location='', query=''):
+    queryString = '?bbox={}&location={}&query={}'.format(bbox, location, query)
+    url = API + '/mobility/v1/branches' + queryString
+    response = requests.get(url, headers=headers)
+    return response.json()
+
+
+def branchesAsJson(headers, bbox='', location='', query=''):
+    queryString = '?bbox={}&location={}&query={}'.format(bbox, location, query)
+    url = API + '/mobility/v1/branches.json' + queryString
+    response = requests.get(url, headers=headers)
+    return response.json()
+
+
+def branchesAsGeoJson(headers, bbox='', location='', query=''):
+    queryString = '?bbox={}&location={}&query={}'.format(bbox, location, query)
+    url = API + '/mobility/v1/branches.geojson' + queryString
     response = requests.get(url, headers=headers)
     return response.json()
