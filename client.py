@@ -7,7 +7,7 @@ HEADERS = {
     'x-api-key': os.environ.get('X_API_KEY'),
     'x-request-id': "12345",
     'x-session-id': "12345",
-    'x-authorization': "fdb6c7c24bbc3a2c4144c1848825ab7d3a4ccb43",
+    'x-authorization': "6c18c234b1b18b1d97c7043e2e41135c293d0da9",
 }
 
 # Returns all accounts from owner
