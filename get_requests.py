@@ -14,7 +14,7 @@ def accounts_all(headers):
     '''
     Returns all accounts from owner
     '''
-    url = API + '/v1/accounts'
+    url = API + '/accounts/v3/accounts'
 
     # Make get request to API with headers
     response = requests.get(url, headers=headers)
@@ -25,7 +25,7 @@ def account_by_id(account_id, headers):
     '''
     Returns one account by id from owner
     '''
-    url = API + '/v1/accounts/{}'.format(account_id)
+    url = API + '/accounts/v3/accounts/{}'.format(account_id)
 
     # Makes get request to API with headers
     response = requests.get(url, headers=headers)
@@ -33,46 +33,14 @@ def account_by_id(account_id, headers):
 
 
 def account_transactions(account_id, headers):
-    url = API + '/v1/accounts/{}/transactions'.format(account_id)
+    url = API + '/accounts/v3/accounts/{}/transactions'.format(account_id)
     response = requests.get(url, headers=headers)
     return response.json()
 
 
 def account_transaction_by_id(account_id, transaction_id, headers):
     url = API + \
-        '/v1/accounts/{}/transactions/{}'.format(account_id, transaction_id)
-    response = requests.get(url, headers=headers)
-    return response.json()
-
-
-def holdings(headers):
-    url = API + '/v1/holdings'
-    response = requests.get(url, headers=headers)
-    return response.json()
-
-
-def funds(headers):
-    url = API + '/v1/funds'
-    response = requests.get(url, headers=headers)
-    return response.json()
-
-
-def branches(headers, bbox='', location='', query=''):
-    queryString = '?bbox={}&location={}&query={}'.format(bbox, location, query)
-    url = API + '/mobility/v1/branches' + queryString
-    response = requests.get(url, headers=headers)
-    return response.json()
-
-
-def branchesAsJson(headers, bbox='', location='', query=''):
-    queryString = '?bbox={}&location={}&query={}'.format(bbox, location, query)
-    url = API + '/mobility/v1/branches.json' + queryString
-    response = requests.get(url, headers=headers)
-    return response.json()
-
-
-def branchesAsGeoJson(headers, bbox='', location='', query=''):
-    queryString = '?bbox={}&location={}&query={}'.format(bbox, location, query)
-    url = API + '/mobility/v1/branches.geojson' + queryString
+        '/accounts/v3/accounts/{}/transactions/{}'.format(
+            account_id, transaction_id)
     response = requests.get(url, headers=headers)
     return response.json()
